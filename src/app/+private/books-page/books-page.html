@@ -1,4 +1,4 @@
-<button class="primary">افزودن+</button>
+<button (click)="add()" class="primary">افزودن+</button>
 <table>
     <thead>
         <tr>
@@ -10,51 +10,17 @@
         </tr>
     </thead>
     <tbody>
+        @for (item of data; track $index) { 
         <tr>
-            <td>سمفونی مردگان</td>
-            <td>عباس معروفی</td>
-            <td>گروه انتشاراتی ققنوس</td>
-            <td>249,000</td>
+            <td>{{item.title}}</td>
+            <td>{{item.writer}}</td>
+            <td>{{item.publisher}}</td>
+            <td>{{item.price}}</td>
             <td>
                 <button class="primary">ویرایش</button>
                 <button class="primary">حذف</button>
             </td>
         </tr>
+        }
+
     </tbody>
-    <tbody>
-        <tr>
-            <td>قهوه سرد اقای نویسنده</td>
-            <td>روزبه معین</td>
-            <td>نشر نیماژ</td>
-            <td>228,780</td>
-            <td>
-                <button class="primary">ویرایش</button>
-                <button class="primary">حذف</button>
-            </td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>چشمهایش</td>
-            <td>بزرگ علوی </td>
-            <td>نگاه</td>
-            <td>355,500</td>
-            <td>
-                <button class="primary">ویرایش</button>
-                <button class="primary">حذف</button>
-            </td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>بوف کور</td>
-            <td>صادق هدایت</td>
-            <td>نبض دانش</td>
-            <td>88,000</td>
-            <td>
-                <button class="primary">ویرایش</button>
-                <button class="primary">حذف</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
