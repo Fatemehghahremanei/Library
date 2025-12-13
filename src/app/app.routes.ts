@@ -6,9 +6,10 @@ import { MemberPage } from './+private/member-page/member-page';
 import { BorrowsPage } from './+private/borrows-page/borrows-page';
 import { ReportPage } from './+private/report-page/report-page';
 import { DashboardPage } from './+private/dashboard-page/dashboard-page';
+import { privateGuard } from './+shared/private-guard';
 
 export const routes: Routes = [
-    { path: 'login', component: Loginpage },
+    { path: 'login',canActivate:[privateGuard], component: Loginpage },
     {
         path: 'private', component: PrivateTemplate, children: [
             { path: 'books', component: BooksPage },
