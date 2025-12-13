@@ -9,9 +9,9 @@ import { DashboardPage } from './+private/dashboard-page/dashboard-page';
 import { privateGuard } from './+shared/private-guard';
 
 export const routes: Routes = [
-    { path: 'login',canActivate:[privateGuard], component: Loginpage },
+    { path: 'login',component: Loginpage },
     {
-        path: 'private', component: PrivateTemplate, children: [
+        path: 'private',canActivate:[privateGuard],  component: PrivateTemplate, children: [
             { path: 'books', component: BooksPage },
             { path: 'members', component: MemberPage },
             { path: 'borrows', component: BorrowsPage },
