@@ -1,0 +1,26 @@
+<div class="login">
+    <form (ngSubmit)="check()">
+        <div id="border">
+           🧑🏻‍💻 فرم زیر را با دقت پر کنید
+        </div>
+        <div>
+            <label for="username">نام کاربری</label>
+            <input [(ngModel)]="loginForm.username" id="username" name="username" type="text" placeholder="نام کاربری">
+        </div>
+        <div>
+            <label for="password">پسورد</label>
+            <input [(ngModel)]="loginForm.password" id="password" name="password" type="password" placeholder="پسورد">
+        </div>
+        <div>
+            <input [(ngModel)]="loginForm.keepMe" id="keepMe" name="keepMe" type="checkbox">
+            <label for="keepMe">من را به خاطر بسپار ❤️</label>
+        </div>
+        <div>
+            <button [disabled]="loginForm.username==''||loginForm.password==''" type="submit">ثبت</button>
+        </div>
+        @if (message!=='') {
+        <div>
+            {{message}}
+        </div>
+        }
+    </form>

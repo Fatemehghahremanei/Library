@@ -1,0 +1,25 @@
+.sidebar {
+    right: 0;
+    position: fixed;
+    top: 0;
+    background-color: rgb(198, 79, 184);
+    width: 200px;
+    height: 100vh;
+
+    a {
+        display: block;
+        color: floralwhite;
+        padding: 0.2em 0.5em;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:before {
+        content: '📔';
+    }
+}
+
+.content {
+    margin-right: 200px;
+    padding: 0.4em;
+}

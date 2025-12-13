@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: rgb(233, 105, 146);
+    margin: 0;  
+}
+@font-face {
+    font-family: Ir;
+    src: url('/font/IR.woff2');
+}
+*{
+    font-family: IR;
+}
