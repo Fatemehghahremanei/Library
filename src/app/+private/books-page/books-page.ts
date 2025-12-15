@@ -1,22 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, inject, InjectionToken, OnInit } from '@angular/core';
+import { BooksService } from './books-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-books-page',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './books-page.html',
   styleUrl: './books-page.scss',
 })
-export class BooksPage {
-
-  data: BookItem[] = [
-    { id: 1, title: 'بادام', writer: 'وون پیونگ سون', publisher: 'دانش', price: 90000 },
-    { id: 2, title: 'پنج قدم فاصله', writer: 'ریچل لیپینکات', publisher: 'مجله', price: 69900 },
-    { id: 3, title: 'کتابخانه نیمه شب', writer: 'مت هیگ', publisher: 'ایین محمود', price: 42800 },
-    { id: 4, title: 'هم نام', writer: 'آدریان یانگ', publisher: 'آراستگان', price: 98900 },
-    { id: 5, title: 'سم هستم بفرمایید', writer: 'داستین تائو', publisher: 'آثار قلم', price: 59900 },
-  ];
+export class BooksPage  implements OnInit{
+seve() {
+     this.booksService.add(this.item); 
+     this.dataRefresh();
+     this.state='list';
+}
+  ngOnInit(): void {
+    this.dataRefresh();
+  }
+  data:BookItem[]=[];
+  item:BookItem={
+   id:0,
+   title:'', 
+   writer:'',
+   price:0,
+   publisher:''
+  };
+  booksService=inject(BooksService);
+  state:string='list';
+  dataRefresh(){
+this.data=this.booksService.list();
+  }
    add() {
-     this.data.push({id:6,title:'سمفونی مردگان',writer:'عباس معروفی',publisher:'آثار قلم',price:88000}); 
+   this.state='add';
+  }
+  cancel(){
+    this.state='list';
   }
 }
 export interface BookItem {
