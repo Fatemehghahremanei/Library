@@ -31,20 +31,20 @@
 @else {
 <form (ngSubmit)="seve()">
     <div>
-        <input [ngModel]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+        <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
     </div>
     <div>
-        <input [ngModel]="item.title" id="title" name="title" type="text" placeholder="عنوان">
+        <input [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
     </div>
     <div>
-        <input [ngModel]="item.writer"  id="writer" name="writer" type="text" placeholder="نویسنده">
+        <input [(ngModel)]="item.writer"  id="writer" name="writer" type="text" placeholder="نویسنده">
     </div>
     <div>
-        <input [ngModel]="item.publisher" id="placeholder" name="placeholder" type="text" placeholder="ناشر">
+        <input [(ngModel)]="item.publisher" id="placeholder" name="placeholder" type="text" placeholder="ناشر">
 
     </div>
     <div>
-        <input id="price" name="price" type="number" placeholder="قیمت">
+        <input [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
     </div>
     <button class="primary" type="submit">تایید</button>
     <button  (click)="cancel()" class="primary" type="submit">انصراف</button>

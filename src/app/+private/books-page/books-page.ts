@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './books-page.scss',
 })
 export class BooksPage  implements OnInit{
+members: any;
 seve() {
      this.booksService.add(this.item); 
      this.dataRefresh();

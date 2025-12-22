@@ -12,7 +12,7 @@ member: any;
     this.membersRefresh();
   }
 
-  memberList: IMemberItem[] = [];
+  memberList: MemberItem[] = [];
 
   constructor(private membersService: MembersService) {
     this.membersRefresh();
@@ -27,7 +27,7 @@ member: any;
     this.membersRefresh();
   }
 }
-  export interface IMemberItem {
+  export interface MemberItem {
     id: number;
     firstname: string;
     lastname: string;
