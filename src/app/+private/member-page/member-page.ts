@@ -1,35 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MembersService } from './member-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-members-page',
+  imports: [FormsModule],
   templateUrl: './member-page.html',
   styleUrls: ['./member-page.scss']
 })
 export class MembersPage implements OnInit {
-member: any;
+
+  seve() {
+    this.memberservice.add(this.item);
+    this.dataRefresh();
+    this.state = 'list';
+  }
+
   ngOnInit(): void {
-    this.membersRefresh();
+    this.dataRefresh();
   }
-
-  memberList: MemberItem[] = [];
-
-  constructor(private membersService: MembersService) {
-    this.membersRefresh();
+  data: memberItem[] = [];
+  item: memberItem = {
+    id: 0,
+    firstname:'',
+    lastname:'',
+    nationality:''
+  };
+  memberservice = inject(MembersService)
+  state: string = 'list';
+  dataRefresh() {
+    this.data = this.memberservice.list();
   }
-
-  membersRefresh() {
-    this.memberList = this.membersService.list();
-  }
-
   add() {
-    this.membersService.add({ id: 136, firstname: 'علی ', lastname: 'موسوی', nationality: 4045573789 });
-    this.membersRefresh();
+    this.state = 'add';
+  }
+  cancel() {
+    this.state = 'list';
   }
 }
-  export interface MemberItem {
-    id: number;
-    firstname: string;
-    lastname: string;
-    nationality: number;
-  }
+export interface memberItem {
+  id: number;
+  firstname: string;
+  lastname: string;
+  nationality: string;
+}

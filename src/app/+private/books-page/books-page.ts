@@ -8,34 +8,33 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './books-page.html',
   styleUrl: './books-page.scss',
 })
-export class BooksPage  implements OnInit{
-members: any;
-seve() {
-     this.booksService.add(this.item); 
-     this.dataRefresh();
-     this.state='list';
-}
+export class BooksPage implements OnInit {
+  seve() {
+    this.booksService.add(this.item);
+    this.dataRefresh();
+    this.state = 'list';
+  }
   ngOnInit(): void {
     this.dataRefresh();
   }
-  data:BookItem[]=[];
-  item:BookItem={
-   id:0,
-   title:'', 
-   writer:'',
-   price:0,
-   publisher:''
+  data: BookItem[] = [];
+  item: BookItem = {
+    id: 0,
+    title: '',
+    writer: '',
+    price: 0,
+    publisher: ''
   };
-  booksService=inject(BooksService);
-  state:string='list';
-  dataRefresh(){
-this.data=this.booksService.list();
+  booksService = inject(BooksService);
+  state: string = 'list';
+  dataRefresh() {
+    this.data = this.booksService.list();
   }
-   add() {
-   this.state='add';
+  add() {
+    this.state = 'add';
   }
-  cancel(){
-    this.state='list';
+  cancel() {
+    this.state = 'list';
   }
 }
 export interface BookItem {

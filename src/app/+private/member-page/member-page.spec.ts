@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberPage } from './member-page';
+import { MembersService } from './member-page';
 
 describe('MemberPage', () => {
   let component: MemberPage;
