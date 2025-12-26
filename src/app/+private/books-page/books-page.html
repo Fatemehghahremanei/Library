@@ -21,7 +21,7 @@
             <td>{{item.price}}</td>
             <td>
                 <button (click)="edit(item)" class="primary">ویرایش</button>
-                <button class="primary">حذف</button>
+                <button (click)="remove(item)" class="primary">حذف</button>
             </td>
         </tr>
         }
@@ -31,27 +31,32 @@
 @else {
 <form (ngSubmit)="seve()">
     @if(state=='remove'){
-        <div class="alert">
-         آیا از حذف کتاب اطمینان دارید !؟
-        </div>
+    <div class="alert">
+        آیا از حذف کتاب اطمینان دارید !؟
+    </div>
     }
     <div>
-        <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+        <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number"
+            placeholder="شناسه">
     </div>
     <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.title" id="title" name="title" type="text"
+            placeholder="عنوان">
     </div>
     <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.writer"  id="writer" name="writer" type="text" placeholder="نویسنده">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.writer" id="writer" name="writer" type="text"
+            placeholder="نویسنده">
     </div>
     <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.publisher" id="placeholder" name="placeholder" type="text" placeholder="ناشر">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.publisher" id="placeholder" name="placeholder" type="text"
+            placeholder="ناشر">
 
     </div>
     <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.price" id="price" name="price" type="number"
+            placeholder="قیمت">
     </div>
     <button class="primary" type="submit">تایید</button>
-    <button  (click)="cancel()" class="primary" type="submit">انصراف</button>
+    <button (click)="cancel()" class="primary" type="submit">انصراف</button>
 </form>
 }

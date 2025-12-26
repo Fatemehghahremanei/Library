@@ -25,8 +25,13 @@
   </tbody>
 </table>
 }
-    @else {
+  @else {
 <form (ngSubmit)="seve()">
+    @if(state=='remove'){
+    <div class="alert">
+        آیا از حذف کتاب اطمینان دارید !؟
+    </div>
+    }
     <div>
         <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
     </div>

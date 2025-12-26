@@ -27,4 +27,8 @@ export class BooksService {
      this.data[index].price=item.price;  
     }
     }
+        remove(item:BookItem){
+     this.data=this.data.filter(b=>b.id!=item.id);
+    }
+    
 }
