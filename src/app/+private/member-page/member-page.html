@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>شناسه </th>
       <th>نام</th>
       <th>نام خانوادگی</th>
       <th>کد ملی</th>
@@ -12,13 +13,13 @@
   <tbody>
     @for ( item of data; track $index){
     <tr>
+      <td>{{item.id}}</td>
       <td>{{item.firstname}}</td>
       <td>{{item.lastname}}</td>
       <td>{{item.nationality}}</td>
-
       <td>
-        <button class="primary">ویرایش</button>
-        <button class="primary">حذف</button>
+        <button (click)="edit(item)" class="primary">ویرایش</button>
+        <button (click)="remove(item)" class="primary">حذف</button>
       </td>
     </tr>
       }
@@ -29,20 +30,20 @@
 <form (ngSubmit)="seve()">
     @if(state=='remove'){
     <div class="alert">
-        آیا از حذف کتاب اطمینان دارید !؟
+        آیا از حذف این عضو اطمینان دارید !؟
     </div>
     }
     <div>
-        <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+        <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
     </div>
     <div>
-        <input [(ngModel)]="item.firstname" id="firstname" name="firstname" type="text" placeholder="نام ">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.firstname" id="firstname" name="firstname" type="text" placeholder="نام ">
     </div>
     <div>
-        <input [(ngModel)]="item.lastname"  id="lastname" name="lastname" type="text" placeholder="نام خانوادگی">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.lastname"  id="lastname" name="lastname" type="text" placeholder="نام خانوادگی">
     </div>
     <div>
-        <input [(ngModel)]="item.nationality" id="nationality" name="nationality" type="number" placeholder="کد ملی">
+        <input [disabled]="state=='remove'" [(ngModel)]="item.nationality" id="nationality" name="nationality" type="number" placeholder="کد ملی">
 
     </div>
     <button class="primary" type="submit">تایید</button>

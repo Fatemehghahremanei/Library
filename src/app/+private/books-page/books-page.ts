@@ -31,7 +31,6 @@ export class BooksPage implements OnInit {
   item: BookItem = {
     title: '',
     writer: '',
-    price: 0,
     publisher: ''
   };
   booksService = inject(BooksService);

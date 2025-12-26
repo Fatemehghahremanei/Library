@@ -1,46 +1,60 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject,InjectionToken, OnInit } from '@angular/core';
 import { MembersService } from './member-service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-members-page',
   imports: [FormsModule],
-  templateUrl: './member-page.html',
-  styleUrls: ['./member-page.scss']
+  templateUrl: './Member-page.html',
+  styleUrls: ['./Member-page.scss']
 })
-export class MembersPage implements OnInit {
-
+export class membersPage implements OnInit {
   seve() {
-    this.memberservice.add(this.item);
+    if (this.state == 'add') {
+      this.membersService.add(this.item);
+
+    }
+    else if (this.state == 'edit') {
+      this.membersService.edit(this.item);
+    }
+    else if (this.state == 'remove') {
+      this.membersService.remove(this.item);
+    }
     this.dataRefresh();
     this.state = 'list';
   }
-
   ngOnInit(): void {
     this.dataRefresh();
   }
+   state: string = 'list';
   data: memberItem[] = [];
   item: memberItem = {
-    id: 0,
-    firstname:'',
-    lastname:'',
-    nationality:''
+    firstname: '',
+    lastname: '',
   };
-  memberservice = inject(MembersService)
-  state: string = 'list';
+  membersService = inject(MembersService)
   dataRefresh() {
-    this.data = this.memberservice.list();
+    this.data = this.membersService.list();
   }
   add() {
     this.state = 'add';
+     this.item = { firstname: '', lastname: '' };
   }
+    edit(members: memberItem) {
+      this.item = { ...members};
+      this.state = 'edit'
+    }
+    remove(members:memberItem){
+     this.item = { ...members};
+     this.state='remove';
+    }
   cancel() {
     this.state = 'list';
   }
 }
 export interface memberItem {
-  id: number;
+  id?: number;
   firstname: string;
   lastname: string;
-  nationality: string;
+  nationality?: string;
 }
