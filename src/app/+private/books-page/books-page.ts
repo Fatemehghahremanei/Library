@@ -16,6 +16,13 @@ export class BooksPage  extends BaseCrudPage<BookItem> implements OnInit {
     this.dataRefresh();
   }
   override setService = inject(BooksService);
+  override addPrepir(): void {
+    this.item={
+      title:'',
+      publisher:'',
+      writer:''
+    }
+  }
 }
 export interface BookItem  extends Thing{
   title: string;
