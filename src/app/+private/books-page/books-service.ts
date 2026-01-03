@@ -13,5 +13,10 @@ export class BooksService extends BaseService<BookItem> {
       { id: 4, title: 'هم نام', writer: 'آدریان یانگ', publisher: 'آراستگان', price: 98900 },
       { id: 5, title: 'سم هستم بفرمایید', writer: 'داستین تائو', publisher: 'آثار قلم', price: 59900 },
     ];
-    
+    override update(destination: BookItem, source: BookItem): void {
+        destination.title=source.title; 
+        destination.writer=source.writer;
+        destination.publisher=source.publisher; 
+        destination.price=source.price;  
+    }
 }

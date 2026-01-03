@@ -13,4 +13,9 @@ export class MembersService extends BaseService<memberItem> {
     { id: 113, firstname: 'کاوه', lastname: 'مهدوی', nationality: '4045573478' },
     { id: 114, firstname: 'کوروش', lastname: 'حسینی', nationality: '4045573478' }
   ];
+  override update(destination: memberItem, source: memberItem): void {
+    destination.firstname=source.firstname;
+    destination.lastname=source.lastname;
+    destination.nationality=source.nationality;
+  }
 }
