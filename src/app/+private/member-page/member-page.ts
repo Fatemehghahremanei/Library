@@ -1,6 +1,7 @@
 import { Component, inject,InjectionToken, OnInit } from '@angular/core';
 import { MembersService } from './member-service';
 import { FormsModule } from '@angular/forms';
+import { Thing } from '../../+shared/+base/base-thing';
 
 @Component({
   selector: 'app-members-page',
@@ -52,8 +53,7 @@ export class membersPage implements OnInit {
     this.state = 'list';
   }
 }
-export interface memberItem {
-  id?: number;
+export interface memberItem extends Thing{
   firstname: string;
   lastname: string;
   nationality?: string;
