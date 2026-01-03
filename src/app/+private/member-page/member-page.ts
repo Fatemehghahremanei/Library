@@ -15,6 +15,13 @@ export class membersPage extends BaseCrudPage<memberItem> implements OnInit {
     this.dataRefresh();
   }
   override setService=inject(MembersService);
+  override addPrepir(): void {
+    this.item={
+      firstname:'',
+      lastname:'',
+      nationality:''
+    }
+  }
   }
 export interface memberItem extends Thing{
   firstname: string;

@@ -6,12 +6,11 @@ export class BaseCrudPage<T extends Thing>{
       seve() {
     if (this.state == 'add') {
       this.setService.add(this.item);
-
     }
     else if (this.state == 'edit') {
       this.setService.edit(this.item);
     }
-        else if (this.state == 'remove') {
+    else if (this.state == 'remove') {
       this.setService. remove(this.item);
     }
     this.dataRefresh();
@@ -29,7 +28,9 @@ export class BaseCrudPage<T extends Thing>{
   }
   add() {
     this.state = 'add';
-   // this.item = { title: '', writer: '', publisher: '' };
+    this.addPrepir();
+  }
+  addPrepir(){
   }
   edit(book: T) {
     this.item = { ...book };
