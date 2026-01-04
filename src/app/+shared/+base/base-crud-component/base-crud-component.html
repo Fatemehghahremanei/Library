@@ -1,6 +1,6 @@
 @if (mystate=='list') {
 <div>
-    <button (click)="onAdd.emit()">افزودن</button>
+    <button class="bts1" (click)="onAdd.emit()">+افزودن</button>
 </div>
 <table>
     <thead>
@@ -19,16 +19,22 @@
              <td>{{item[col.field]}}</td>
             }
             <td>
-                <button (click)="onEdit.emit(item)">ویرایش</button>
-                <button (click)="onRemove.emit(item)">حذف</button>
+                <button class="bt" (click)="onEdit.emit(item)">ویرایش</button>
+                <button class="bts" (click)="onRemove.emit(item)">حذف</button>
             </td>
         }
     </tbody>
 </table>
 }
 @else {
+      @if(mystate=='remove'){
+  <div class="alert">
+    آیا از حذف اطمینان دارید !؟
+  </div>
+  }
     <form (ngSubmit)="onsave.emit()">
-        <button type="button">تایید</button>
-        <button (click)="onCancel.emit()" type="button">انصراف</button>
+        <ng-content></ng-content>
+        <button class="primary" (click)="onsave.emit()" type="button">تایید</button>
+        <button class="primary" (click)="onCancel.emit()" type="button">انصراف</button>
     </form>
 }

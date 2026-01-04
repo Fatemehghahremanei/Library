@@ -7,43 +7,7 @@
  (onRemove)="remove($event)"
   (onsave)="seve()"
   >
-</my-crud>
-@if (state=='list') {
-<button (click)="add()" class="primary">+افزودن</button>
-<table>
-  <thead>
-    <tr>
-      <th>شناسه </th>
-      <th>نام</th>
-      <th>نام خانوادگی</th>
-      <th>کد ملی</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @for ( item of data; track $index){
-    <tr>
-      <td>{{item.id}}</td>
-      <td>{{item.firstname}}</td>
-      <td>{{item.lastname}}</td>
-      <td>{{item.nationality}}</td>
-      <td>
-        <button (click)="edit(item)" class="primary">ویرایش</button>
-        <button (click)="remove(item)" class="primary">حذف</button>
-      </td>
-    </tr>
-    }
-  </tbody>
-</table>
-}
-@else {
-<form (ngSubmit)="seve()">
-  @if(state=='remove'){
-  <div class="alert">
-    آیا از حذف این عضو اطمینان دارید !؟
-  </div>
-  }
-  <div>
+   <div>
     <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number"
       placeholder="شناسه">
   </div>
@@ -58,9 +22,5 @@
   <div>
     <input [disabled]="state=='remove'" [(ngModel)]="item.nationality" id="nationality" name="nationality" type="number"
       placeholder="کد ملی">
-
   </div>
-  <button class="primary" type="submit">تایید</button>
-  <button (click)="cancel()" class="primary" type="submit">انصراف</button>
-</form>
-}
+</my-crud>

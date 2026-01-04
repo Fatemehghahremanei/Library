@@ -14,6 +14,11 @@ import { BaseCrudComponent, column } from "../../+shared/+base/base-crud-compone
 export class membersPage extends BaseCrudPage<memberItem> implements OnInit {
   ngOnInit(): void {
     this.dataRefresh();
+        this.item={
+      firstname:'',
+      lastname:'',
+      nationality:''
+    }
   }
   override setService=inject(MembersService);
   override addPrepir(): void {
