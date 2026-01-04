@@ -3,7 +3,7 @@ import { BooksService } from './books-service';
 import { FormsModule } from '@angular/forms';
 import { Thing } from '../../+shared/+base/base-thing';
 import { BaseCrudPage } from '../../+shared/+base/base-crud-page';
-import { BaseCrudComponent } from "../../+shared/+base/base-crud-component/base-crud-component";
+import { BaseCrudComponent, column } from "../../+shared/+base/base-crud-component/base-crud-component";
 
 @Component({
   selector: 'app-books-page',
@@ -24,6 +24,13 @@ export class BooksPage  extends BaseCrudPage<BookItem> implements OnInit {
       writer:''
     }
   }
+  booksColumns:column[]=[
+    {field:'id',titel:'شناسه'},
+    {field:'title',titel:'عنوان'},
+    {field:'writer',titel:'نویسنده'},
+    {field:'publisher',titel:'ناشر'},
+    {field:'price',titel:'قیمت'}
+  ]
 }
 export interface BookItem  extends Thing{
   title: string;

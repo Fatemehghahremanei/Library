@@ -1,4 +1,35 @@
-<my-crud [mystate]="state"></my-crud>
+<my-crud
+ [mystate]="state" 
+ [columns]="booksColumns"
+ [mydata]="data"
+(onCancel)="cancel()"
+ (onAdd)="add()" 
+ (onEdit)="edit($event)"
+ (onRemove)="remove($event)"
+ (onsave)="seve()"
+ >
+     <div>
+        <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number"
+            placeholder="شناسه">
+    </div>
+    <div>
+        <input [disabled]="state=='remove'" [(ngModel)]="item.title" id="title" name="title" type="text"
+            placeholder="عنوان">
+    </div>
+    <div>
+        <input [disabled]="state=='remove'" [(ngModel)]="item.writer" id="writer" name="writer" type="text"
+            placeholder="نویسنده">
+    </div>
+    <div>
+        <input [disabled]="state=='remove'" [(ngModel)]="item.publisher" id="placeholder" name="placeholder" type="text"
+            placeholder="ناشر">
+
+    </div>
+    <div>
+        <input [disabled]="state=='remove'" [(ngModel)]="item.price" id="price" name="price" type="number"
+            placeholder="قیمت">
+    </div>
+</my-crud>
 @if (state=='list') {
 <button (click)="add()" class="primary">افزودن+</button>
 <table>
@@ -30,12 +61,13 @@
 </table>
 }
 @else {
-<form (ngSubmit)="seve()">
-    @if(state=='remove'){
+     @if(state=='remove'){
     <div class="alert">
         آیا از حذف کتاب اطمینان دارید !؟
     </div>
     }
+<form (ngSubmit)="seve()">
+
     <div>
         <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number"
             placeholder="شناسه">

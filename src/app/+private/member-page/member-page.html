@@ -1,4 +1,13 @@
-<my-crud [mystate]="state"></my-crud>
+<my-crud [mystate]="state"
+ [columns]="memberColumns"
+ [mydata]="data"
+ (onAdd)="add()"
+ (onCancel)="cancel()"
+ (onEdit)="edit($event)"
+ (onRemove)="remove($event)"
+  (onsave)="seve()"
+  >
+</my-crud>
 @if (state=='list') {
 <button (click)="add()" class="primary">+افزودن</button>
 <table>
@@ -23,31 +32,35 @@
         <button (click)="remove(item)" class="primary">حذف</button>
       </td>
     </tr>
-      }
+    }
   </tbody>
 </table>
 }
-  @else {
+@else {
 <form (ngSubmit)="seve()">
-    @if(state=='remove'){
-    <div class="alert">
-        آیا از حذف این عضو اطمینان دارید !؟
-    </div>
-    }
-    <div>
-        <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
-    </div>
-    <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.firstname" id="firstname" name="firstname" type="text" placeholder="نام ">
-    </div>
-    <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.lastname"  id="lastname" name="lastname" type="text" placeholder="نام خانوادگی">
-    </div>
-    <div>
-        <input [disabled]="state=='remove'" [(ngModel)]="item.nationality" id="nationality" name="nationality" type="number" placeholder="کد ملی">
+  @if(state=='remove'){
+  <div class="alert">
+    آیا از حذف این عضو اطمینان دارید !؟
+  </div>
+  }
+  <div>
+    <input [disabled]="state=='edit'||state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number"
+      placeholder="شناسه">
+  </div>
+  <div>
+    <input [disabled]="state=='remove'" [(ngModel)]="item.firstname" id="firstname" name="firstname" type="text"
+      placeholder="نام ">
+  </div>
+  <div>
+    <input [disabled]="state=='remove'" [(ngModel)]="item.lastname" id="lastname" name="lastname" type="text"
+      placeholder="نام خانوادگی">
+  </div>
+  <div>
+    <input [disabled]="state=='remove'" [(ngModel)]="item.nationality" id="nationality" name="nationality" type="number"
+      placeholder="کد ملی">
 
-    </div>
-    <button class="primary" type="submit">تایید</button>
-    <button  (click)="cancel()" class="primary" type="submit">انصراف</button>
+  </div>
+  <button class="primary" type="submit">تایید</button>
+  <button (click)="cancel()" class="primary" type="submit">انصراف</button>
 </form>
-    }
+}

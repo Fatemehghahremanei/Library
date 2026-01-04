@@ -1,57 +1,34 @@
 @if (mystate=='list') {
 <div>
-    <button>افزودن</button>
+    <button (click)="onAdd.emit()">افزودن</button>
 </div>
 <table>
     <thead>
         <tr>
-            <th>تست</th>
-            <th>تست</th>
-            <th>تست</th>
+            @for (col of columns; track $index) {
+            <th>{{col.titel}}</th>
+            }
+            <th></th>
+
         </tr>
     </thead>
     <tbody>
+        @for (item of mydata; track $index){
         <tr>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
+            @for (col of columns; track $index) {
+             <td>{{item[col.field]}}</td>
+            }
             <td>
-                <button>ویرایش</button>
-                <button>حذف</button>
+                <button (click)="onEdit.emit(item)">ویرایش</button>
+                <button (click)="onRemove.emit(item)">حذف</button>
             </td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
-            <td>
-                <button>ویرایش</button>
-                <button>حذف</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
-            <td>ازمایش</td>
-            <td>
-                <button>ویرایش</button>
-                <button>حذف</button>
-            </td>
-        </tr>
+        }
     </tbody>
 </table>
 }
 @else {
-    <form>
-        <button>تایید</button>
-        <button>انصراف</button>
+    <form (ngSubmit)="onsave.emit()">
+        <button type="button">تایید</button>
+        <button (click)="onCancel.emit()" type="button">انصراف</button>
     </form>
 }
